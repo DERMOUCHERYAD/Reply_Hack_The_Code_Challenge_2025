@@ -42,4 +42,4 @@ Your solver is a computer program that helps you decide, turn by turn, what to b
 - **The Solver:**  
   A program that simulates each round, checks if you're meeting your power requirements, and decides which resources to buy to maximize profit without overspending. It then outputs a simple list of your buying decisions turn by turn.
 
-For the full details on the game rules (including special effects and resource interactions), please refer to [Gree_Revolution_Game.pdf](Gree_Revolution_Game.pdf).
+For the full details on the game rules (including special effects and resource interactions), please refer to [Green_Revolution_Game.pdf](Green_Revolution_Game.pdf).
