@@ -1,48 +1,45 @@
-# TheGreenRevolutionGame
-Reply Hack The Code Challenge
 # The Green Revolution Game Challenge
 
 Welcome to the **Green Revolution Game Challenge**!
 
-This challenge requires you to manage a limited budget to power buildings over many turns. At each turn, you decide which energy resources to purchase and activate so that you meet a minimum power target and earn profit. 
+## What Is the Challenge?
 
-Each turn is defined by three numbers:
-- **TM**: Minimum number of buildings that must be powered.
-- **TX**: Maximum number of buildings counted toward profit.
-- **TR**: Profit per building powered.
+Imagine you have a small budget and you need to power a set of buildings over many rounds (or turns). In each round, you're given:
 
-Each available resource has:
-- A one-time **activation cost**.
-- A **maintenance cost** every active turn.
-- A fixed number of active turns before it needs a downtime.
-- A **total lifespan** (active plus downtime).
-- A capacity to power a set number of buildings per active turn.
-- Sometimes a **special effect** that may modify global parameters (such as boosting profit or changing power thresholds).
+- **A minimum number of buildings that must be powered** (to get any profit).
+- **A maximum limit on the number of buildings that count for profit.**
+- **A profit value for every building you successfully power.**
 
-Your solver reads an input file containing your starting budget, the resources’ parameters, and the turn specifications. It then simulates the game turn by turn: purchasing resources when needed (while keeping within the budget), accounting for maintenance costs, and calculating profit based on the number of powered buildings. The output is a schedule listing, for each turn when purchases occur, the turn number and the IDs of the purchased resources.
+You have several types of energy resources you can buy. Each resource costs money to purchase and has ongoing costs to keep it working. It can power a certain number of buildings for a few rounds before it needs a break or stops working entirely. Some resources even have special effects that might boost your profit or change how many buildings you can power.
 
-For a complete description of the game rules, please see [GameRules.pdf](GameRules.pdf).
+Your goal is to make smart choices about which resources to buy and when—so you always meet the minimum required, maximize your profit, and never run out of money.
 
-## Game Flow Diagram
+## What Does the Solver Do?
 
-```mermaid
-flowchart TD
-    A[Start Turn]
-    B[Check Current Budget]
-    C[Decide to Purchase Resources?]
-    D[Activate Purchased Resources]
-    E[Calculate Total Power and Maintenance Costs]
-    F{Is Total Power ≥ TM?}
-    G[Calculate Profit: min(Power, TX) × TR]
-    H[Update Budget]
-    I[Proceed to Next Turn]
-    
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F -- Yes --> G
-    F -- No --> H
-    G --> H
-    H --> I
+Your solver is a computer program that helps you decide, turn by turn, what to buy and when. Here's a simple overview:
+
+1. **Reads the Game Data:**  
+   It takes an input file that tells it your starting budget, details about each resource (like cost, how many buildings it powers, etc.), and the rules for each round (minimum, maximum, and profit per building).
+
+2. **Simulates Each Turn:**  
+   For every turn, the solver:
+   - Checks how many buildings are being powered by the resources you already own.
+   - Compares that number to the required minimum.
+   - If you’re below the minimum, it decides to purchase more resources, choosing those that give you the best “bang for your buck.”
+   - It then calculates the turn's profit (and subtracts maintenance costs) so that the remaining money becomes your new budget for the next turn.
+
+3. **Produces a Purchase Plan:**  
+   The program outputs a schedule showing, for each turn when you make a purchase, what you bought. Each output line tells you:
+   - The turn number.
+   - How many items were bought that turn.
+   - The IDs of the resources purchased.
+
+## In Short
+
+- **The Challenge:**  
+  Manage a limited budget to power buildings over many rounds by buying energy resources with different costs, lifespans, and power outputs.
+
+- **The Solver:**  
+  A program that simulates each round, checks if you're meeting your power requirements, and decides which resources to buy to maximize profit without overspending. It then outputs a simple list of your buying decisions turn by turn.
+
+For the full details on the game rules (including special effects and resource interactions), please refer to [Gree_Revolution_Game.pdf](Gree_Revolution_Game.pdf).
