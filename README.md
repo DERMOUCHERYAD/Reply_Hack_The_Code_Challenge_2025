@@ -43,3 +43,43 @@ Your solver is a computer program that helps you decide, turn by turn, what to b
   A program that simulates each round, checks if you're meeting your power requirements, and decides which resources to buy to maximize profit without overspending. It then outputs a simple list of your buying decisions turn by turn.
 
 For the full details on the game rules (including special effects and resource interactions), please refer to [Green_Revolution_Game.pdf](Green_Revolution_Game.pdf).
+
+## About the Solver Code:
+This Python-based solver uses a heuristic, turn-by-turn simulation approach to tackle the Green Revolution Game Challenge. Here’s a quick overview of how it works:
+
+1.   **Input Parsing:**
+The solver reads an input file containing your starting budget, resource definitions, and turn specifications. It extracts details such as activation and maintenance costs, resource lifespans, and the profit rules for each turn.
+
+2.   **Turn Simulation:**
+For each turn, the solver simulates the active resources to determine how many buildings are being powered and calculates the associated maintenance costs. If the production is below the minimum required (TM), it makes purchase decisions.
+
+3.   **Purchase Decisions:**
+When production is insufficient, the solver uses a greedy strategy to buy the resource with the best efficiency (defined by the ratio of buildings powered per cost) that is affordable. These purchases boost the overall production for the turn.
+
+4.   **Budget Update & Profit Calculation:**
+The solver calculates the turn’s profit using the formula:
+Profit =min(Total Powered,𝑇𝑋)×𝑇𝑅
+and updates the budget by subtracting activation and maintenance costs and adding the profit.
+
+5.   **Output Generation:**
+Only turns where purchases are made are recorded. The output file lists the turn number, the number of resources bought, and the IDs of those resources.
+
+This simple, greedy approach ensures that the solver consistently meets the minimum requirements each turn while trying to maximize profit without overspending. Although heuristic in nature, it produces a valid purchase schedule under the challenge’s constraints.
+
+
+## How to Run the Solver
+
+1. **Prepare your input file:**  
+   Edit `input.txt` with the instance you wish to solve.
+
+2. **Run the solver:**  
+-For example, in a Unix-like shell or CMD:
+   ```bash
+   python3 solver.py < input.txt > output.txt
+-In PowerShell, you might use:
+  Get-Content input.txt | python3 solver.py > output.txt
+-Check the output:
+The file output.txt will contain your purchase schedule. Each line is formatted as:
+
+
+
