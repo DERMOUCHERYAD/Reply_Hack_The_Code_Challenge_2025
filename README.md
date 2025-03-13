@@ -79,7 +79,7 @@ This simple, greedy approach ensures that the solver consistently meets the mini
 -In PowerShell, you might use:
    ```bash
   Get-Content input.txt | python3 solver.py > output.txt
-
+```
 -Check the output:
 The file output.txt will contain your purchase schedule. Each line is formatted as:
 
